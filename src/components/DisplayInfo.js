@@ -1,4 +1,6 @@
 import React from "react";
+import './DisplayInfo.scss';
+import logo from '../logo.svg';
 class DisplayInfo extends React.Component {
     state = {
         isShowListUser: true,
@@ -12,7 +14,8 @@ class DisplayInfo extends React.Component {
         const { listUsers } = this.props;
         console.log("listUsers", listUsers);
         return (
-            <div>
+            <div className="display-info-container">
+                <img src={logo}></img>
                 <div>
                     <span onClick={() => { this.handleShowHide() }}>{this.state.isShowListUser === true ? "Hide list users" : "Show list users"}</span>
                 </div>
@@ -23,9 +26,12 @@ class DisplayInfo extends React.Component {
 
                                 return (
                                     <div key={user.id} className={+user.age > 18 ? "green" : "red"} >
-                                        <p>
-                                            {index + 1} - Name: {user.name} - Age: {user.age}
-                                        </p>
+                                        <div>
+                                            My name's {user.name}
+                                        </div>
+                                        <div>
+                                            My age's {user.age}
+                                        </div>
                                     </div>
                                 );
 
