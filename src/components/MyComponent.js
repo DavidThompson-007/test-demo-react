@@ -1,8 +1,9 @@
 //class component
 //function component
 import React from 'react';
-import UserInfo from './UserInfo';
+
 import DisplayInfo from './DisplayInfo';
+import AddUserInfo from './AddUserInfo';
 class MyComponent extends React.Component {
     state = {
         listUsers: [
@@ -11,13 +12,28 @@ class MyComponent extends React.Component {
             { id: 3, name: 'Jane', age: 28 },
         ],
     }
+    handleAddNewUser = (userObj) => {
+        // let listUsersNew = this.state.listUsers;
+        // listUsersNew.unshift(userObj);
+        // console.log('check: ', listUsersNew);
+        this.setState({
+            listUsers: [...this.state.listUsers, userObj]
+            // listUsers: listUsersNew
+        })
+    }
     render() {
 
         return (
             <div>
-                <UserInfo />
 
-                <DisplayInfo listUsers={this.state.listUsers} users={this.state.listUsers}></DisplayInfo>
+                <AddUserInfo
+                    handleAddNewUser={this.handleAddNewUser}
+                />
+                <br></br>
+                <DisplayInfo
+                    listUsers={this.state.listUsers}
+
+                />
             </div >
         )
     }
